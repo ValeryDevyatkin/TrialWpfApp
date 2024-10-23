@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValeryDzeviatkin.MVVM", "..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValeryDzeviatkin.TrialApp.ViewModel", "..\src\ValeryDzeviatkin.TrialApp.ViewModel\ValeryDzeviatkin.TrialApp.ViewModel.csproj", "{0856E4E1-51B2-4760-B3B9-6B32133DF410}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValeryDzeviatkin.TrialApp.DependencyInjection", "..\src\ValeryDzeviatkin.TrialApp.DependencyInjection\ValeryDzeviatkin.TrialApp.DependencyInjection.csproj", "{ABCF321F-48F4-497E-BB19-660853D7F2E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{0856E4E1-51B2-4760-B3B9-6B32133DF410}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0856E4E1-51B2-4760-B3B9-6B32133DF410}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0856E4E1-51B2-4760-B3B9-6B32133DF410}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABCF321F-48F4-497E-BB19-660853D7F2E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABCF321F-48F4-497E-BB19-660853D7F2E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABCF321F-48F4-497E-BB19-660853D7F2E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABCF321F-48F4-497E-BB19-660853D7F2E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{380EA10F-728E-423E-BE53-F58C78D74D7D} = {3B99545E-E205-41AE-AD41-3437C5824208}
 		{DB5999E8-2BF3-45F4-BBA8-DF0F9DC0288C} = {3B99545E-E205-41AE-AD41-3437C5824208}
 		{0856E4E1-51B2-4760-B3B9-6B32133DF410} = {3B99545E-E205-41AE-AD41-3437C5824208}
+		{ABCF321F-48F4-497E-BB19-660853D7F2E5} = {3B99545E-E205-41AE-AD41-3437C5824208}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E6108311-BEE1-4167-89F6-C6A15684CD88}
