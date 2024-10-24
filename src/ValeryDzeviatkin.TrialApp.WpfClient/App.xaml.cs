@@ -1,14 +1,27 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using ValeryDzeviatkin.MVVM;
+using ValeryDzeviatkin.MVVM.Helpers;
+using ValeryDzeviatkin.MVVM.Interfaces;
 
-namespace ValeryDzeviatkin.TrialApp.WpfClient
+namespace ValeryDzeviatkin.TrialApp.WpfClient;
+
+internal partial class App
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    public App() : base(ServiceLocator.Container)
     {
     }
 
+    public override void BlockUiForCommand(IAsyncCommand command)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void UnlockUiForCommand(IAsyncCommand command)
+    {
+        throw new NotImplementedException();
+    }
+
+    protected override void HandleExceptionExternal(ExceptionLogItem ex)
+    {
+        throw new NotImplementedException();
+    }
 }

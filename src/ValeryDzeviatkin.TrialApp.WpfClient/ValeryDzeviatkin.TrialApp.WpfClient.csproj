@@ -6,6 +6,15 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ValeryDzeviatkin.MVVM\ValeryDzeviatkin.MVVM.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Controls\" />
+  </ItemGroup>
 
 </Project>

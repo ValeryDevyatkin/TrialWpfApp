@@ -8,12 +8,18 @@ namespace ValeryDzeviatkin.MVVM.Base;
 public abstract class CommandBase : ICommand
 {
     private bool _isDisabled;
+    private readonly Predicate<object?>? _canExecute;
 
     public event EventHandler? CanExecuteChanged;
 
-    public bool CanExecute(object parameter) => !_isDisabled && CanExecuteExternal(parameter);
+    protected CommandBase(Predicate<object?>? canExecute = null)
+    {
+        _canExecute = canExecute;
+    }
 
-    public abstract void Execute(object parameter);
+    public bool CanExecute(object? parameter) => !_isDisabled && (_canExecute?.Invoke(parameter) ?? true);
+
+    public abstract void Execute(object? parameter);
 
     protected void Disable()
     {
@@ -29,63 +35,75 @@ public abstract class CommandBase : ICommand
         ChangeCanExecute();
     }
 
-    protected virtual bool CanExecuteExternal(object parameter) => true;
-
     private void ChangeCanExecute() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
 }
 
-public abstract class AsyncCommandBase : CommandBase, IAsyncCommand
+public sealed class Command : CommandBase
 {
-    protected bool ShouldBlockUi { get; set; }
-    public string? ProgressText { get; protected set; }
+    private readonly Action<object?> _execute;
 
-    public override async void Execute(object parameter)
+    public Command(
+        Action<object?> execute,
+        Predicate<object?>? canExecute = null
+        ) : base(canExecute)
+    {
+        _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+    }
+
+    public override void Execute(object? parameter)
     {
         Disable();
 
-        if (ShouldBlockUi)
-        {
-            ((IUiForCommandBlocker)Application.Current).BlockUiForCommand(this);
-
-            await Task.Delay(350);
-        }
-
         try
         {
-            await ExecuteExternalAsync(parameter);
+            _execute(parameter);
         }
         catch (Exception e)
         {
             this.HandleException(e);
         }
 
-        if (ShouldBlockUi)
-        {
-            ((IUiForCommandBlocker)Application.Current).UnlockUiForCommand(this);
-        }
-
         Enable();
     }
-
-    protected abstract Task ExecuteExternalAsync(object parameter);
 }
 
-public class AsyncCommand : AsyncCommandBase
+public sealed class AsyncCommand : CommandBase, IAsyncCommand
 {
-    private readonly Predicate<object> _canExecute;
-    private readonly Func<object, Task> _execute;
+    public string? ProgressText { get; }
 
-    public AsyncCommand(Func<object, Task> execute, Predicate<object>? canExecute = null, bool shouldBlockUi = false,
-        string? progressText = null)
+    private readonly Func<object?, Task> _execute;
+
+    public AsyncCommand(
+        Func<object?, Task> execute,
+        Predicate<object?>? canExecute = null,
+        string? progressText = null
+        ) : base(canExecute)
     {
-        ShouldBlockUi = shouldBlockUi;
         ProgressText = progressText;
 
         _execute = execute ?? throw new ArgumentNullException(nameof(execute));
-        _canExecute = canExecute ?? (parameter => base.CanExecuteExternal(parameter));
     }
 
-    protected override bool CanExecuteExternal(object parameter) => _canExecute(parameter);
+    public override async void Execute(object? parameter)
+    {
+        Disable();
 
-    protected override Task ExecuteExternalAsync(object parameter) => _execute(parameter);
+        var uiBlocker = (IUiForCommandBlocker)Application.Current;
+        uiBlocker.BlockUiForCommand(this);
+
+        await Task.Delay(350);
+
+        try
+        {
+            await _execute(parameter);
+        }
+        catch (Exception e)
+        {
+            this.HandleException(e);
+        }
+
+        uiBlocker.UnlockUiForCommand(this);
+
+        Enable();
+    }
 }
