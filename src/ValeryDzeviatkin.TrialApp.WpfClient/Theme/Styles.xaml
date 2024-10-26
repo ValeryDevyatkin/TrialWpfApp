@@ -1,4 +1,43 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:theme = "clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Theme">
+
+    <Style TargetType = "FrameworkElement">
+        <Setter
+            Property = "SnapsToDevicePixels"
+            Value = "True" />
+    </Style>
+
+    <Style
+        x:Key="RegionContainerStyle"
+        TargetType="UserControl"
+        BasedOn="{StaticResource {x:Type FrameworkElement}}">
+        <Setter
+            Property="Padding"
+            Value="{x:Static theme:UiConstants.InnerThickness}" />
+        <Setter
+            Property="BorderThickness"
+            Value="0.5" />
+        <Setter
+            Property="BorderBrush"
+            Value="Black" />
+    </Style>
+
+    <Style
+        x:Key="WindowContainerStyle"
+        TargetType="UserControl"
+        BasedOn="{StaticResource {x:Type FrameworkElement}}">
+        <Setter
+            Property="Padding"
+            Value="{x:Static theme:UiConstants.OutterThickness}" />
+    </Style>
+
+    <Style
+        TargetType="Button"
+        BasedOn="{StaticResource {x:Type FrameworkElement}}">
+        <Setter
+            Property="Background"
+            Value="Aqua" />
+    </Style>
+
 </ResourceDictionary>

@@ -4,9 +4,44 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views"
+        xmlns:viewModels="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.ViewModels"
+        xmlns:theme = "clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Theme"
+        xmlns:regions="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions"
         mc:Ignorable="d"
-        Title="MainWindow">
-    <Grid>
+        WindowStartupLocation = "CenterScreen"
+        ResizeMode = "CanResize"
+        MinHeight = "500"
+        MinWidth = "700"
+        Height = "500"
+        Width = "700">
 
-    </Grid>
+    <d:Control.DataContext>
+        <viewModels:MainViewModel />
+    </d:Control.DataContext>
+
+    <UserControl Style="{StaticResource WindowContainerStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="{x:Static theme:UiConstants.InnerThicknessForGrid}" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <regions:TabSwitchPanel Grid.Row="0" />
+
+            <Grid Grid.Row="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="{x:Static theme:UiConstants.InnerThicknessForGrid}" />
+                    <ColumnDefinition
+                        Width="Auto"
+                        MinWidth="200" />
+                </Grid.ColumnDefinitions>
+
+                <regions:TabContainer Grid.Column="0" />
+                <regions:LoginForm Grid.Column="2" />
+            </Grid>
+        </Grid>
+    </UserControl>
+
 </Window>

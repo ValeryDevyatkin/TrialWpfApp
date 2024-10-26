@@ -1,4 +1,5 @@
-﻿using ValeryDzeviatkin.MVVM;
+﻿using System.Windows;
+using ValeryDzeviatkin.MVVM;
 using ValeryDzeviatkin.MVVM.Helpers;
 using ValeryDzeviatkin.MVVM.Interfaces;
 
@@ -20,8 +21,36 @@ internal partial class App
         throw new NotImplementedException();
     }
 
+    protected override void OnStartup(StartupEventArgs args)
+    {
+        try
+        {
+            base.OnStartup(args);
+
+            CreateMainWindow().Show();
+        }
+        catch (Exception e)
+        {
+            this.HandleException(e);
+
+            throw;
+        }
+    }
+
+    protected override void OnExit(ExitEventArgs args)
+    {
+        try
+        {
+            base.OnExit(args);
+        }
+        catch (Exception e)
+        {
+            this.HandleException(e);
+        }
+    }
+
     protected override void HandleExceptionExternal(ExceptionLogItem ex)
     {
-        throw new NotImplementedException();
+        MessageBox.Show(ex.Message, ex.Source, MessageBoxButton.OK, MessageBoxImage.Error);
     }
 }
