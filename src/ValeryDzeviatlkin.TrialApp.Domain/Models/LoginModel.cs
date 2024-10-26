@@ -1,5 +1,5 @@
 ﻿namespace ValeryDzeviatlkin.TrialApp.Domain.Models;
 
-public class LoginModel
+public class LogInModel
 {
 }

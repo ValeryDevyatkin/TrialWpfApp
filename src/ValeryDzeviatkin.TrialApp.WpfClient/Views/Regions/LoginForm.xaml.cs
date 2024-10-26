@@ -2,9 +2,9 @@
 
 namespace ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions;
 
-public partial class LoginForm : UserControl
+public partial class LogInForm : UserControl
 {
-    public LoginForm()
+    public LogInForm()
     {
         InitializeComponent();
     }

@@ -3,9 +3,9 @@ using ValeryDzeviatkin.MVVM.Base;
 
 namespace ValeryDzeviatkin.TrialApp.WpfClient.ViewModels;
 
-internal class LoginViewModel : ViewModelBase
+internal class LogInViewModel : ViewModelBase
 {
-    public LoginViewModel(IUnityContainer container) : base(container)
+    public LogInViewModel(IUnityContainer container) : base(container)
     {
     }
 

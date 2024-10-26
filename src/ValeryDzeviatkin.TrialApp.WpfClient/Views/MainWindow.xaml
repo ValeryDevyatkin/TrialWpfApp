@@ -39,7 +39,7 @@
                 </Grid.ColumnDefinitions>
 
                 <regions:TabContainer Grid.Column="0" />
-                <regions:LoginForm Grid.Column="2" />
+                <regions:LogInForm Grid.Column="2" />
             </Grid>
         </Grid>
     </UserControl>
