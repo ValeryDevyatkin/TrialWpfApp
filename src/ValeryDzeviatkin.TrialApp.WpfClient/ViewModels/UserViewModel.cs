@@ -1,10 +1,16 @@
 ﻿using Unity;
+using ValeryDzeviatkin.MVVM;
 using ValeryDzeviatkin.MVVM.Base;
 
 namespace ValeryDzeviatkin.TrialApp.WpfClient.ViewModels;
 
 internal class UserViewModel : ViewModelBase
 {
+    // This is only for design-time development.
+    public UserViewModel() : base(ServiceLocator.Container)
+    {
+    }
+
     public UserViewModel(IUnityContainer container) : base(container)
     {
     }

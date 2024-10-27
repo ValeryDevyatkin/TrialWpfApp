@@ -1,14 +1,22 @@
 ﻿using System.Windows.Input;
 using Unity;
+using ValeryDzeviatkin.MVVM;
 using ValeryDzeviatkin.MVVM.Base;
 
 namespace ValeryDzeviatkin.TrialApp.WpfClient.ViewModels;
 
-internal class MainViewModel : ViewModelBase
+internal partial class MainViewModel : ViewModelBase
 {
+    // This is only for design-time development.
+    public MainViewModel() : base(ServiceLocator.Container)
+    {
+        LogInViewModel = new LogInViewModel(ServiceLocator.Container);
+    }
+
     public MainViewModel(IUnityContainer container) : base(container)
     {
         LogInViewModel = new LogInViewModel(container);
+        SelectedMainViewTab = MainViewTabType.UserInfo;
     }
 
     public LogInViewModel LogInViewModel { get; }

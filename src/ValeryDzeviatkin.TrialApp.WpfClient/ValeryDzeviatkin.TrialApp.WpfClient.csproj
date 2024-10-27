@@ -13,8 +13,4 @@
     <ProjectReference Include="..\ValeryDzeviatkin.MVVM\ValeryDzeviatkin.MVVM.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Controls\" />
-  </ItemGroup>
-
 </Project>

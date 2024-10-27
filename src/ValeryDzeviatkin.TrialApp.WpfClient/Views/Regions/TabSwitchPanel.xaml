@@ -4,11 +4,64 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions"
+             xmlns:viewModels="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.ViewModels"
              mc:Ignorable="d"
-             Style="{StaticResource RegionContainerStyle}">
+             xmlns:theme = "clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Theme">
 
-    <Grid>
+    <d:Control.DataContext>
+        <viewModels:MainViewModel />
+    </d:Control.DataContext>
 
-    </Grid>
+    <UserControl.Resources>
+        <Style
+            TargetType="Button"
+            BasedOn="{StaticResource {x:Type ButtonBase}}">
+            <Setter Property="Margin">
+                <Setter.Value>
+                    <Thickness
+                        Left="0"
+                        Right="{x:Static theme:UiConstants.InnerThicknessBase}"
+                        Top="0"
+                        Bottom="0" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <UserControl.Style>
+        <Style
+            TargetType="UserControl"
+            BasedOn="{StaticResource RegionContainerStyle}">
+            <Setter Property="Padding">
+                <Setter.Value>
+                    <Thickness
+                        Left="{x:Static theme:UiConstants.InnerThicknessBase}"
+                        Right="0"
+                        Top="{x:Static theme:UiConstants.InnerThicknessBase}"
+                        Bottom="{x:Static theme:UiConstants.InnerThicknessBase}" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Style>
+
+    <WrapPanel
+        FlowDirection="LeftToRight"
+        Orientation="Horizontal">
+        
+        <Button
+            Content="User Info"
+            Command="{Binding SelectMainViewTabCommand, Mode=OneTime}"
+            CommandParameter="{x:Static viewModels:MainViewTabType.UserInfo}" />
+        
+        <Button
+            Content="Developer Info"
+            Command="{Binding SelectMainViewTabCommand, Mode=OneTime}"
+            CommandParameter="{x:Static viewModels:MainViewTabType.DeveloperInfo}" />
+        
+        <Button
+            Content="Bonus View"
+            Command="{Binding SelectMainViewTabCommand, Mode=OneTime}"
+            CommandParameter="{x:Static viewModels:MainViewTabType.BonusView}" />
+    </WrapPanel>
 
 </UserControl>
