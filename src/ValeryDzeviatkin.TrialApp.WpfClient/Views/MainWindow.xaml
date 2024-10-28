@@ -1,19 +1,20 @@
-﻿<Window x:Class="ValeryDzeviatkin.TrialApp.WpfClient.Views.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views"
-        xmlns:viewModels="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.ViewModels"
-        xmlns:theme = "clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Theme"
-        xmlns:regions="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions"
-        mc:Ignorable="d"
-        WindowStartupLocation = "CenterScreen"
-        ResizeMode = "CanMinimize"
-        MinHeight = "500"
-        MinWidth = "700"
-        Height = "500"
-        Width = "700">
+﻿<Window
+    x:Class="ValeryDzeviatkin.TrialApp.WpfClient.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views"
+    xmlns:viewModels="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.ViewModels"
+    xmlns:theme = "clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Theme"
+    xmlns:regions="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions" xmlns:controls="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls"
+    mc:Ignorable="d"
+    WindowStartupLocation = "CenterScreen"
+    ResizeMode = "CanMinimize"
+    MinHeight = "500"
+    MinWidth = "700"
+    Height = "500"
+    Width = "700">
 
     <d:Control.DataContext>
         <viewModels:MainViewModel />
@@ -28,7 +29,11 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <regions:MainViewTabSwitchPanel Grid.Row="0" />
+                <controls:RegionWrapper
+                    Grid.Row="0"
+                    Orientation="Horizontal">
+                    <regions:MainViewTabSwitchPanel />
+                </controls:RegionWrapper>
 
                 <Grid Grid.Row="2" >
                     <Grid.ColumnDefinitions>
@@ -39,8 +44,13 @@
                             MinWidth="220" />
                     </Grid.ColumnDefinitions>
 
-                    <regions:MainViewTabContainer Grid.Column="0" />
-                    <regions:LogInForm Grid.Column="2" />
+                    <controls:RegionWrapper Grid.Column="0">
+                        <regions:MainViewTabContainer />
+                    </controls:RegionWrapper>
+
+                    <controls:RegionWrapper Grid.Column="2">
+                        <regions:LogInForm />
+                    </controls:RegionWrapper>
                 </Grid>
             </Grid>
         </UserControl>

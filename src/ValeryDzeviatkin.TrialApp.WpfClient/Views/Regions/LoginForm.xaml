@@ -1,22 +1,21 @@
-﻿<UserControl x:Class="ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions.LogInForm"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions"
-             xmlns:viewModels="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.ViewModels"
-             xmlns:theme = "clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Theme"
-             xmlns:controls="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls"
-             mc:Ignorable="d">
+﻿<UserControl
+    x:Class="ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions.LogInForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions"
+    xmlns:viewModels="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.ViewModels"
+    xmlns:theme = "clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Theme"
+    xmlns:controls="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls"
+    mc:Ignorable="d">
 
     <d:Control.DataContext>
         <viewModels:MainViewModel />
     </d:Control.DataContext>
 
     <UserControl.Style>
-        <Style
-            TargetType = "UserControl"
-            BasedOn="{StaticResource RegionContainerStyle}">
+        <Style TargetType = "UserControl">
             <Setter Property = "Content">
                 <Setter.Value>
                     <Grid>
@@ -31,7 +30,7 @@
 
                         <TextBlock
                             Grid.Row="0"
-                            Text="Not Autorized"
+                            Text="You're not autorized!"
                             Style="{StaticResource SectionHeaderTextStyle}" />
 
                         <controls:LabelFor
@@ -62,7 +61,7 @@
             </Setter>
             <Style.Triggers>
                 <DataTrigger
-                    Binding = "{Binding IsUserLoggedIn, Mode=OneWay}"
+                    Binding = "{Binding IsUserLoggedIn}"
                     Value = "True">
                     <Setter Property = "Content">
                         <Setter.Value>
@@ -75,7 +74,7 @@
 
                                 <TextBlock
                                     Grid.Row="0"
-                                    Text="Autorized"
+                                    Text="Want to leave?"
                                     Style="{StaticResource SectionHeaderTextStyle}" />
 
                                 <controls:ButtonWrapper Grid.Row="1">

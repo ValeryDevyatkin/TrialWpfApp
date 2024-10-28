@@ -1,0 +1,69 @@
+﻿<ContentControl
+    x:Class="ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls.RegionWrapper"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls"
+    xmlns:theme = "clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Theme"
+    mc:Ignorable="d">
+
+    <ContentControl.Style>
+        <Style
+            TargetType="local:RegionWrapper"
+            BasedOn="{StaticResource {x:Type FrameworkElement}}">
+            <Style.Triggers>
+                <Trigger
+                    Property="Orientation"
+                    Value="Vertical">
+                    <Setter Property="Padding">
+                        <Setter.Value>
+                            <Thickness
+                                Left="{x:Static theme:UiConstants.InnerThicknessBase}"
+                                Right="{x:Static theme:UiConstants.InnerThicknessBase}"
+                                Top="{x:Static theme:UiConstants.InnerThicknessBase}"
+                                Bottom="0" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger
+                    Property="Orientation"
+                    Value="Horizontal">
+                    <Setter Property="Padding">
+                        <Setter.Value>
+                            <Thickness
+                                Left="{x:Static theme:UiConstants.InnerThicknessBase}"
+                                Right="0"
+                                Top="{x:Static theme:UiConstants.InnerThicknessBase}"
+                                Bottom="{x:Static theme:UiConstants.InnerThicknessBase}" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </ContentControl.Style>
+
+    <ContentControl.Template>
+        <ControlTemplate TargetType="ContentControl">
+            <Border Padding="{TemplateBinding Padding}">
+                <Border.Style>
+                    <Style
+                        TargetType="Border"
+                        BasedOn="{StaticResource {x:Type FrameworkElement}}">
+                        <Setter
+                            Property="CornerRadius"
+                            Value="{x:Static theme:UiConstants.CornerRadius}" />
+                        <Setter
+                            Property="BorderThickness"
+                            Value="0.5" />
+                        <Setter
+                            Property="BorderBrush"
+                            Value="Black" />
+                    </Style>
+                </Border.Style>
+                <ContentPresenter />
+            </Border>
+        </ControlTemplate>
+    </ContentControl.Template>
+
+</ContentControl>

@@ -1,14 +1,14 @@
 ﻿<ContentControl
-             x:Class="ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls.LabelFor"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls"
-             xmlns:theme = "clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Theme"
-             mc:Ignorable="d"
-             x:Name="Root">
-    s
+    x:Class="ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls.LabelFor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls"
+    xmlns:theme = "clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Theme"
+    mc:Ignorable="d"
+    x:Name="Root">
+
     <ContentControl.Style>
         <Style TargetType="ContentControl">
             <Setter Property="Margin">
@@ -35,7 +35,7 @@
                     Grid.Column = "0"
                     Text="{TemplateBinding Label}" />
 
-                <ContentPresenter Grid.Column = "1" />
+                <ContentPresenter Grid.Column = "2" />
             </Grid>
         </ControlTemplate>
     </ContentControl.Template>

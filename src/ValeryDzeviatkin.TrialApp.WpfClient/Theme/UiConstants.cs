@@ -12,4 +12,6 @@ internal static class UiConstants
 
     public static readonly Thickness OutterThickness = new(OutterThicknessBase);
     public static readonly Thickness InnerThickness = new(InnerThicknessBase);
+
+    public static readonly CornerRadius CornerRadius = new(4);
 }

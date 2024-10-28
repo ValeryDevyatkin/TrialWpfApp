@@ -63,7 +63,7 @@ internal partial class MainViewModel : ViewModelBase
     #region LogIn command
 
     public ICommand LogInCommand => _logInCommand ??=
-        new AsyncCommand(ExecuteLogInAsync, progressText: "Loggining in ...");
+        new AsyncCommand(ExecuteLogInAsync, progressText: "Loggin in ...");
 
     private ICommand? _logInCommand;
 
@@ -80,7 +80,7 @@ internal partial class MainViewModel : ViewModelBase
     #region LogOut command
 
     public ICommand LogOutCommand => _logOutCommand ??=
-        new AsyncCommand(ExecuteLogOutAsync, progressText: "Loggining out ...");
+        new AsyncCommand(ExecuteLogOutAsync, progressText: "Loggin out ...");
 
     private ICommand? _logOutCommand;
 
