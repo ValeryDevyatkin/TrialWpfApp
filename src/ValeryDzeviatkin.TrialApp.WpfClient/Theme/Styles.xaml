@@ -12,9 +12,15 @@
         x:Key="RegionContainerStyle"
         TargetType="UserControl"
         BasedOn="{StaticResource {x:Type FrameworkElement}}">
-        <Setter
-            Property="Padding"
-            Value="{x:Static theme:UiConstants.InnerThickness}" />
+        <Setter Property="Padding">
+            <Setter.Value>
+                <Thickness
+                    Left="{x:Static theme:UiConstants.InnerThicknessBase}"
+                    Right="{x:Static theme:UiConstants.InnerThicknessBase}"
+                    Top="{x:Static theme:UiConstants.InnerThicknessBase}"
+                    Bottom="0" />
+            </Setter.Value>
+        </Setter>
         <Setter
             Property="BorderThickness"
             Value="0.5" />
@@ -35,6 +41,27 @@
     <Style
         TargetType="ButtonBase"
         BasedOn="{StaticResource {x:Type FrameworkElement}}">
+    </Style>
+
+    <Style
+        TargetType="TextBlock"
+        BasedOn="{StaticResource {x:Type FrameworkElement}}">
+    </Style>
+
+    <Style
+        x:Key="SectionHeaderTextStyle"
+        TargetType="TextBlock"
+        BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Margin">
+            <Setter.Value>
+                <Thickness
+                    Left="0"
+                    Right="0"
+                    Top="0"
+                    Bottom="{x:Static theme:UiConstants.InnerThicknessBase}" />
+            </Setter.Value>
+        </Setter>
     </Style>
 
 </ResourceDictionary>

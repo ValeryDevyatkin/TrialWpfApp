@@ -11,15 +11,18 @@ internal partial class MainViewModel : ViewModelBase
     public MainViewModel() : base(ServiceLocator.Container)
     {
         LogInViewModel = new LogInViewModel(ServiceLocator.Container);
+        UserViewModel = new UserViewModel(ServiceLocator.Container);
     }
 
     public MainViewModel(IUnityContainer container) : base(container)
     {
         LogInViewModel = new LogInViewModel(container);
+        UserViewModel = new UserViewModel(container);
         SelectedMainViewTab = MainViewTabType.UserInfo;
     }
 
     public LogInViewModel LogInViewModel { get; }
+    public UserViewModel UserViewModel { get; }
 
     #region IsUserLoggedIn: bool
 

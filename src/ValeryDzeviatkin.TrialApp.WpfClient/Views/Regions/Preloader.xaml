@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions.Preloader"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions"
+             xmlns:viewModels="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.ViewModels"
+             xmlns:theme = "clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Theme"
+             mc:Ignorable="d">
+
+    <d:Control.DataContext>
+        <viewModels:MainViewModel />
+    </d:Control.DataContext>
+
+    <UserControl.Resources>
+        <Style
+            TargetType="TextBlock"
+            BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter
+                Property="FontSize"
+                Value="28" />
+        </Style>
+    </UserControl.Resources>
+
+    <UserControl.Style>
+        <Style TargetType = "UserControl">
+            <Setter Property="Cursor" Value="Wait" />
+            <Setter Property="Visibility" Value="Collapsed" />
+            <Style.Triggers>
+                <DataTrigger
+                    Binding = "{Binding IsPreloaderVisible}"
+                    Value = "True">
+                    <Setter
+                        Property = "Visibility"
+                        Value = "Visible" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+
+    <Grid>
+        <Grid
+            Background = "Black"
+            Opacity = "0.7">
+            <Border
+                CornerRadius = "5"
+                Padding = "{x:Static theme:UiConstants.InnerThickness}"
+                VerticalAlignment = "Center"
+                HorizontalAlignment = "Center"
+                Background="LawnGreen">
+                <!--This TextBlock is a transparent container spacer.-->
+                <TextBlock
+                    Text = "{Binding CommandProgressText, Mode=OneWay}"
+                    Foreground = "Transparent"
+                    VerticalAlignment = "Center"
+                    HorizontalAlignment = "Center" />
+            </Border>
+        </Grid>
+        <TextBlock
+            Text="{Binding CommandProgressText, Mode=OneWay}"
+            VerticalAlignment = "Center"
+            HorizontalAlignment = "Center" />
+    </Grid>
+
+</UserControl>

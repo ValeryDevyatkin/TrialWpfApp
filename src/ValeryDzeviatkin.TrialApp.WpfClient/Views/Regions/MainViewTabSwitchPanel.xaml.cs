@@ -2,9 +2,9 @@
 
 namespace ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions;
 
-public partial class TabSwitchPanel : UserControl
+public partial class MainViewTabSwitchPanel : UserControl
 {
-    public TabSwitchPanel()
+    public MainViewTabSwitchPanel()
     {
         InitializeComponent();
     }

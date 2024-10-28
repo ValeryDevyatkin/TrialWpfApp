@@ -1,7 +1,10 @@
 ﻿using System.Windows;
+using System.Windows.Threading;
+using Unity;
 using ValeryDzeviatkin.MVVM;
 using ValeryDzeviatkin.MVVM.Helpers;
 using ValeryDzeviatkin.MVVM.Interfaces;
+using ValeryDzeviatkin.TrialApp.WpfClient.ViewModels;
 
 namespace ValeryDzeviatkin.TrialApp.WpfClient;
 
@@ -13,12 +16,17 @@ internal partial class App
 
     public override void BlockUiForCommand(IAsyncCommand command)
     {
-        throw new NotImplementedException();
+        var mainViewModel = Container.Resolve<MainViewModel>();
+        mainViewModel.CommandProgressText = command.ProgressText;
+        mainViewModel.IsPreloaderVisible = true;
+        MainWindow?.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => { }));
     }
 
     public override void UnlockUiForCommand(IAsyncCommand command)
     {
-        throw new NotImplementedException();
+        var mainViewModel = Container.Resolve<MainViewModel>();
+        mainViewModel.IsPreloaderVisible = false;
+        mainViewModel.CommandProgressText = null;
     }
 
     protected override void OnStartup(StartupEventArgs args)

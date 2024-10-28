@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions"
              xmlns:viewModels="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.ViewModels"
-             mc:Ignorable="d"
              xmlns:theme = "clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Theme"
-             x:Name="Root">
+             xmlns:controls="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls"
+             mc:Ignorable="d">
 
     <d:Control.DataContext>
         <viewModels:MainViewModel />
@@ -19,33 +19,44 @@
             BasedOn="{StaticResource RegionContainerStyle}">
             <Setter Property = "Content">
                 <Setter.Value>
-                    <Grid DataContext="{Binding LogInViewModel, Mode=OneTime}">
+                    <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="{x:Static theme:UiConstants.InnerThicknessForGrid}" />
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="{x:Static theme:UiConstants.InnerThicknessForGrid}" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <TextBox
+                        <TextBlock
                             Grid.Row="0"
-                            Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            Text="Not Autorized"
+                            Style="{StaticResource SectionHeaderTextStyle}" />
 
-                        <PasswordBox
-                            Grid.Row="2" />
+                        <controls:LabelFor
+                            Grid.Row="1"
+                            Label="Login">
+                            <TextBox Text="{Binding LogInViewModel.Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </controls:LabelFor>
 
-                        <Button
-                            Grid.Row="4"
-                            Content="Log In"
-                            Command="{Binding ElementName=Root, Path=DataContext.LogInCommand, Mode=OneTime}" />
+                        <controls:LabelFor
+                            Grid.Row="2"
+                            Label="Password">
+                            <PasswordBox />
+                        </controls:LabelFor>
 
-                        <Button
-                            Grid.Row="6"
-                            Content="Register"
-                            Command="{Binding ElementName=Root, Path=DataContext.RegisterUserCommand, Mode=OneTime}" />
+                        <controls:ButtonWrapper Grid.Row="3">
+                            <Button
+                                Content="Log In"
+                                Command="{Binding LogInCommand, Mode=OneTime}" />
+                        </controls:ButtonWrapper>
+
+                        <controls:ButtonWrapper Grid.Row="5">
+                            <Button
+                                Content="Register"
+                                Command="{Binding RegisterUserCommand, Mode=OneTime}" />
+                        </controls:ButtonWrapper>
                     </Grid>
                 </Setter.Value>
             </Setter>
@@ -58,12 +69,20 @@
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                                <Button
+
+                                <TextBlock
                                     Grid.Row="0"
-                                    Content="Log Out"
-                                    Command="{Binding LogOutCommand, Mode=OneTime}" />
+                                    Text="Autorized"
+                                    Style="{StaticResource SectionHeaderTextStyle}" />
+
+                                <controls:ButtonWrapper Grid.Row="1">
+                                    <Button
+                                        Content="Log Out"
+                                        Command="{Binding LogOutCommand, Mode=OneTime}" />
+                                </controls:ButtonWrapper>
                             </Grid>
                         </Setter.Value>
                     </Setter>

@@ -9,7 +9,7 @@
         xmlns:regions="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions"
         mc:Ignorable="d"
         WindowStartupLocation = "CenterScreen"
-        ResizeMode = "CanResize"
+        ResizeMode = "CanMinimize"
         MinHeight = "500"
         MinWidth = "700"
         Height = "500"
@@ -19,29 +19,33 @@
         <viewModels:MainViewModel />
     </d:Control.DataContext>
 
-    <UserControl Style="{StaticResource WindowContainerStyle}">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="{x:Static theme:UiConstants.InnerThicknessForGrid}" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+    <Grid>
+        <UserControl Style="{StaticResource WindowContainerStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="{x:Static theme:UiConstants.InnerThicknessForGrid}" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-            <regions:TabSwitchPanel Grid.Row="0" />
+                <regions:MainViewTabSwitchPanel Grid.Row="0" />
 
-            <Grid Grid.Row="2" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="{x:Static theme:UiConstants.InnerThicknessForGrid}" />
-                    <ColumnDefinition
-                        Width="Auto"
-                        MinWidth="200" />
-                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="2" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="{x:Static theme:UiConstants.InnerThicknessForGrid}" />
+                        <ColumnDefinition
+                            Width="Auto"
+                            MinWidth="220" />
+                    </Grid.ColumnDefinitions>
 
-                <regions:TabContainer Grid.Column="0" />
-                <regions:LogInForm Grid.Column="2" />
+                    <regions:MainViewTabContainer Grid.Column="0" />
+                    <regions:LogInForm Grid.Column="2" />
+                </Grid>
             </Grid>
-        </Grid>
-    </UserControl>
+        </UserControl>
+
+        <regions:Preloader />
+    </Grid>
 
 </Window>

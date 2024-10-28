@@ -2,9 +2,9 @@
 
 namespace ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions;
 
-public partial class TabContainer : UserControl
+public partial class MainViewTabContainer : UserControl
 {
-    public TabContainer()
+    public MainViewTabContainer()
     {
         InitializeComponent();
     }

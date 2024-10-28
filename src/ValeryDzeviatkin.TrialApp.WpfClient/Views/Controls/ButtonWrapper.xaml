@@ -1,14 +1,13 @@
 ﻿<ContentControl
-             x:Class="ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls.LabelFor"
+             x:Class="ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls.ButtonWrapper"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls"
              xmlns:theme = "clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Theme"
-             mc:Ignorable="d"
-             x:Name="Root">
-    s
+             mc:Ignorable="d">
+
     <ContentControl.Style>
         <Style TargetType="ContentControl">
             <Setter Property="Margin">
@@ -24,18 +23,14 @@
     </ContentControl.Style>
 
     <ContentControl.Template>
-        <ControlTemplate TargetType="local:LabelFor">
+        <ControlTemplate TargetType="ContentControl">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width = "*" />
-                    <ColumnDefinition Width = "2*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock
-                    Grid.Column = "0"
-                    Text="{TemplateBinding Label}" />
-
-                <ContentPresenter Grid.Column = "1" />
+                <ContentPresenter Grid.Column="1" />
             </Grid>
         </ControlTemplate>
     </ContentControl.Template>

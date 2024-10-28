@@ -91,7 +91,7 @@ public sealed class AsyncCommand : CommandBase, IAsyncCommand
         var uiBlocker = (IUiForCommandBlocker)Application.Current;
         uiBlocker.BlockUiForCommand(this);
 
-        await Task.Delay(350);
+        await Task.Delay(500);
 
         try
         {
