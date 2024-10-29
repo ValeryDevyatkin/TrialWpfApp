@@ -2,9 +2,9 @@
 
 namespace ValeryDzeviatkin.TrialApp.WpfClient.Views;
 
-public partial class DialogWindow : Window
+public partial class RegisterUserDialog : Window
 {
-    public DialogWindow()
+    public RegisterUserDialog()
     {
         InitializeComponent();
     }
