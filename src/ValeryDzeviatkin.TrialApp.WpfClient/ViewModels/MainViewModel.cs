@@ -2,6 +2,7 @@
 using Unity;
 using ValeryDzeviatkin.MVVM;
 using ValeryDzeviatkin.MVVM.Base;
+using ValeryDzeviatkin.TrialApp.WpfClient.Services;
 
 namespace ValeryDzeviatkin.TrialApp.WpfClient.ViewModels;
 
@@ -97,13 +98,21 @@ internal partial class MainViewModel : ViewModelBase
     #region RegisterUser command
 
     public ICommand RegisterUserCommand => _registerUserCommand ??=
-        new Command(ExecuteRegisterUserCommand);
+        new AsyncCommand(ExecuteRegisterUserAsync, progressText: "Registering user ...");
 
     private ICommand? _registerUserCommand;
 
-    private void ExecuteRegisterUserCommand(object? parameter)
+    private Task ExecuteRegisterUserAsync(object? parameter)
     {
-        // TODO VDE: implement Api call.
+        var dialogService = Container.Resolve<DialogService>();
+        var dialogResult = dialogService.ShowRegisterUserDialog();
+
+        if (dialogResult.IsSucess == true)
+        {
+            // TODO VDE: implement Api call.
+        }
+
+        return Task.CompletedTask;
     }
 
     #endregion

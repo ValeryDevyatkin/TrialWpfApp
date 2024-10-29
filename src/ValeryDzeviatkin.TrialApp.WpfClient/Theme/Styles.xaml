@@ -10,10 +10,10 @@
 
     <Style
         x:Key="WindowContainerStyle"
-        TargetType="UserControl"
+        TargetType="Panel"
         BasedOn="{StaticResource {x:Type FrameworkElement}}">
         <Setter
-            Property="Padding"
+            Property="Margin"
             Value="{x:Static theme:UiConstants.OutterThickness}" />
     </Style>
 

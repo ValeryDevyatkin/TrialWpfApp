@@ -8,4 +8,13 @@ public partial class RegisterUserDialog : Window
     {
         InitializeComponent();
     }
+    private void Cancel_Click(object sender, RoutedEventArgs e)
+    {
+        this.DialogResult = false;
+    }
+
+    private void Register_Click(object sender, RoutedEventArgs e)
+    {
+        this.DialogResult = true;
+    }
 }

@@ -7,12 +7,11 @@
     xmlns:local="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views"
     xmlns:viewModels="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.ViewModels"
     xmlns:theme = "clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Theme"
-    xmlns:regions="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions" xmlns:controls="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls"
+    xmlns:regions="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions"
+    xmlns:controls="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls"
     mc:Ignorable="d"
     WindowStartupLocation = "CenterScreen"
     ResizeMode = "CanMinimize"
-    MinHeight = "500"
-    MinWidth = "700"
     Height = "500"
     Width = "700">
 
@@ -21,39 +20,37 @@
     </d:Control.DataContext>
 
     <Grid>
-        <UserControl Style="{StaticResource WindowContainerStyle}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="{x:Static theme:UiConstants.InnerThicknessForGrid}" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+        <Grid Style="{StaticResource WindowContainerStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="{x:Static theme:UiConstants.InnerThicknessForGrid}" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-                <controls:RegionWrapper
-                    Grid.Row="0"
-                    Orientation="Horizontal">
-                    <regions:MainViewTabSwitchPanel />
+            <controls:RegionWrapper
+                Grid.Row="0"
+                Orientation="Horizontal">
+                <regions:MainViewTabSwitchPanel />
+            </controls:RegionWrapper>
+
+            <Grid Grid.Row="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="{x:Static theme:UiConstants.InnerThicknessForGrid}" />
+                    <ColumnDefinition
+                    Width="Auto"
+                    MinWidth="220" />
+                </Grid.ColumnDefinitions>
+
+                <controls:RegionWrapper Grid.Column="0">
+                    <regions:MainViewTabContainer />
                 </controls:RegionWrapper>
 
-                <Grid Grid.Row="2" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="{x:Static theme:UiConstants.InnerThicknessForGrid}" />
-                        <ColumnDefinition
-                            Width="Auto"
-                            MinWidth="220" />
-                    </Grid.ColumnDefinitions>
-
-                    <controls:RegionWrapper Grid.Column="0">
-                        <regions:MainViewTabContainer />
-                    </controls:RegionWrapper>
-
-                    <controls:RegionWrapper Grid.Column="2">
-                        <regions:LogInForm />
-                    </controls:RegionWrapper>
-                </Grid>
+                <controls:RegionWrapper Grid.Column="2">
+                    <regions:LogInForm />
+                </controls:RegionWrapper>
             </Grid>
-        </UserControl>
+        </Grid>
 
         <regions:Preloader />
     </Grid>

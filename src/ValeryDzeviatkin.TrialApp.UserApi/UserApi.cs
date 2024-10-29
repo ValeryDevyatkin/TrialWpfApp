@@ -1,7 +1,5 @@
-﻿using ValeryDzeviatkin.TrialApp.Application.Interfaces;
+﻿namespace ValeryDzeviatkin.TrialApp.UserApi;
 
-namespace ValeryDzeviatkin.TrialApp.UserApi;
-
-public class UserApi : IUserApi
+public class UserApi
 {
 }

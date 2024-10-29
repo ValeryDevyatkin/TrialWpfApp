@@ -7,6 +7,7 @@
     xmlns:local="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Regions"
     xmlns:viewModels="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.ViewModels"
     xmlns:controls="clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Views.Controls"
+    xmlns:theme = "clr-namespace:ValeryDzeviatkin.TrialApp.WpfClient.Theme"
     mc:Ignorable="d">
 
     <d:Control.DataContext>
@@ -17,6 +18,7 @@
         <ContentControl.Style>
             <Style TargetType="ContentControl">
                 <Style.Triggers>
+                    
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
                             <Condition
@@ -34,6 +36,7 @@
                             </Setter.Value>
                         </Setter>
                     </MultiDataTrigger>
+                    
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
                             <Condition
@@ -86,6 +89,7 @@
                             </Setter.Value>
                         </Setter>
                     </MultiDataTrigger>
+                    
                     <DataTrigger
                         Binding="{Binding SelectedMainViewTab}"
                         Value="{x:Static viewModels:MainViewTabType.DeveloperInfo}">
@@ -109,14 +113,54 @@
                             </Setter.Value>
                         </Setter>
                     </DataTrigger>
+                    
                     <DataTrigger
                         Binding="{Binding SelectedMainViewTab}"
                         Value="{x:Static viewModels:MainViewTabType.BonusView}">
                         <Setter Property="Content">
                             <Setter.Value>
-                                <TextBlock
-                                    Style="{StaticResource SectionHeaderTextStyle}"
-                                    Text="This is not implemented bonus view." />
+                                <Border>
+                                    <Border.Style>
+                                        <Style
+                                            TargetType="Border"
+                                            BasedOn="{StaticResource {x:Type FrameworkElement}}">
+                                            <Setter
+                                                Property="CornerRadius"
+                                                Value="{x:Static theme:UiConstants.CornerRadius}" />
+                                            <Setter
+                                                Property="BorderThickness"
+                                                Value="5" />
+                                            <Setter
+                                                Property="BorderBrush"
+                                                Value="DarkBlue" />
+                                            <Setter Property="Margin">
+                                                <Setter.Value>
+                                                    <Thickness
+                                                        Left="0"
+                                                        Right="0"
+                                                        Top="0"
+                                                        Bottom="{x:Static theme:UiConstants.InnerThicknessBase}" />
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <RadialGradientBrush 
+                                                        GradientOrigin="0.5,0.5" 
+                                                        Center="0.5,0.5"
+                                                        RadiusX="0.5"
+                                                        RadiusY="0.5">
+                                                        <RadialGradientBrush.GradientStops>
+                                                            <GradientStop Color="Yellow" Offset="0" />
+                                                            <GradientStop Color="Red" Offset="0.35" />
+                                                            <GradientStop Color="Blue" Offset="0.65" />
+                                                            <GradientStop Color="LightSkyBlue" Offset="1" />
+                                                        </RadialGradientBrush.GradientStops>
+                                                    </RadialGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Border.Style>
+                                </Border>
                             </Setter.Value>
                         </Setter>
                     </DataTrigger>
